@@ -1,0 +1,24 @@
+upstream api {
+        server 127.0.0.1:30001;
+}
+
+
+server {
+      root /var/www/rvn.cool2mine.com;
+        index index.html index.html;
+
+        server_name rvn.cool2mine.com;
+
+        location /api {
+                proxy_pass http://127.0.0.1:30001/api;
+        }
+
+        location / {
+                try_files $uri $uri/ /index.html;
+        }
+
+
+
+   
+
+}
